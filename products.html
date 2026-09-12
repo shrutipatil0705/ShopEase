@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Products - Cartiva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <form action="products.html" method="GET" class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" name="q" id="searchInput" class="form-control" placeholder="Search iPhone, Laptops, Shoes, Earbuds...">
+      </form>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link active">Products</a>
+        <a href="products.html?category=Electronics" class="nav-link">Categories</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="wishlist.html" class="icon-btn" title="Saved Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="badge wishlist-badge" style="background-color: var(--danger); display: none;">0</span>
+        </a>
+
+        <a href="cart.html" class="icon-btn" title="Shopping Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge cart-badge" style="display: none;">0</span>
+        </a>
+
+        <div id="userNavAction">
+          <a href="login.html" class="btn btn-primary btn-sm">
+            <i class="fas fa-user"></i> Login
+          </a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Block -->
+  <main class="main-content">
+    <div class="container">
+      
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-size: 2rem; font-weight: 800; color: var(--dark);">Product Catalog</h1>
+        <p style="color: var(--text-muted);" id="catalogSubtitle">
+          Browse all products available
+        </p>
+      </div>
+
+      <div class="products-page-layout">
+        
+        <!-- Sidebar Filter Panel -->
+        <aside class="filter-sidebar">
+          <form action="products.html" method="GET" id="filterForm">
+            <!-- Category Filter -->
+            <div class="filter-group">
+              <h3 class="filter-title"><i class="fas fa-list-ul" style="color: var(--primary);"></i> Categories</h3>
+              <div class="filter-option">
+                <input type="radio" id="cat_all" name="category" value="" onchange="this.form.submit()">
+                <label for="cat_all">All Categories</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="cat_elec" name="category" value="Electronics" onchange="this.form.submit()">
+                <label for="cat_elec">Electronics</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="cat_fash" name="category" value="Fashion" onchange="this.form.submit()">
+                <label for="cat_fash">Fashion</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="cat_home" name="category" value="Home & Living" onchange="this.form.submit()">
+                <label for="cat_home">Home & Living</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="cat_beau" name="category" value="Beauty" onchange="this.form.submit()">
+                <label for="cat_beau">Beauty</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="cat_spor" name="category" value="Sports" onchange="this.form.submit()">
+                <label for="cat_spor">Sports</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="cat_toys" name="category" value="Toys" onchange="this.form.submit()">
+                <label for="cat_toys">Toys</label>
+              </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-group">
+              <h3 class="filter-title"><i class="fas fa-rupee-sign" style="color: var(--primary);"></i> Price Filter (₹)</h3>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.85rem;">
+                <input type="number" name="min_price" class="form-control" placeholder="Min" style="padding: 0.5rem;">
+                <input type="number" name="max_price" class="form-control" placeholder="Max" style="padding: 0.5rem;">
+              </div>
+              <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Apply Price</button>
+            </div>
+
+            <!-- Rating Filter -->
+            <div class="filter-group">
+              <h3 class="filter-title"><i class="fas fa-star" style="color: #f59e0b;"></i> Minimum Rating</h3>
+              <div class="filter-option">
+                <input type="radio" id="rate_all" name="rating" value="" onchange="this.form.submit()">
+                <label for="rate_all">All Ratings</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="rate_45" name="rating" value="4.5" onchange="this.form.submit()">
+                <label for="rate_45">4.5★ & Above</label>
+              </div>
+              <div class="filter-option">
+                <input type="radio" id="rate_40" name="rating" value="4.0" onchange="this.form.submit()">
+                <label for="rate_40">4.0★ & Above</label>
+              </div>
+            </div>
+
+            <a href="products.html" class="btn btn-outline btn-sm btn-block" style="margin-top: 0.5rem;">
+              <i class="fas fa-undo"></i> Reset Filters
+            </a>
+          </form>
+        </aside>
+
+        <!-- Main Products Area -->
+        <div>
+          <!-- Top Control Bar (Sorting) -->
+          <div style="display: flex; justify-content: space-between; align-items: center; background-color: var(--bg-main); padding: 1rem 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+            <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">
+              Showing <strong id="resultsCount">0</strong> results
+            </span>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <label style="font-size: 0.875rem; font-weight: 600; color: var(--text-muted); white-space: nowrap;">Sort By:</label>
+              <select name="sort" id="sortSelect" class="form-select" style="padding: 0.45rem 0.85rem; width: auto;" onchange="document.getElementById('sortInputHidden').value = this.value; document.getElementById('filterForm').submit();">
+                <option value="popular">Popularity</option>
+                <option value="price_low">Price: Low to High</option>
+                <option value="price_high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="discount">Biggest Discount</option>
+              </select>
+              <input type="hidden" id="sortInputHidden" form="filterForm" name="sort" value="popular">
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="products-grid" id="productsPageGrid">
+            <!-- Populated by script.js -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="about">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="color: white; margin-bottom: 1rem;">
+            <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+            Cart<span style="color: #60a5fa;">iva</span>
+          </a>
+          <p style="margin-bottom: 1.5rem; font-size: 0.9rem;">
+            Cartiva is your premium destination for high quality tech, fashion, lifestyle, and everyday essentials at unbeatable prices.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="products.html?category=Electronics">Electronics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="profile.html">My Account</a></li>
+            <li><a href="orders.html">Order Tracking</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col" id="contact">
+          <h4>Contact Us</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 100 E-Commerce Hub, Tech Park, Bengaluru, India</p>
+          <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="color: var(--primary);"></i> support@cartiva.com</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+

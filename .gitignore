@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and temporary files
+.cache
+*.tmp
+*.log
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment and secret files
+.env
+.env.local
+
+# IDE and Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Executables & tool binaries
+cloudflared.exe
+*.exe
+
+# Node dependencies & build output
+node_modules/
+dist/
+build/

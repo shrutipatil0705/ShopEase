@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Cartiva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <div class="nav-actions">
+        <a href="javascript:void(0)" onclick="logoutUser()" class="btn btn-outline-primary btn-sm">
+          <i class="fas fa-sign-out-alt"></i> Admin Logout
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div>
+          <h1 style="font-size: 2rem; font-weight: 800; color: var(--dark);"><i class="fas fa-chart-line" style="color: var(--primary);"></i> Admin Portal</h1>
+          <p style="color: var(--text-muted);">Manage products, view customer orders, users, and platform analytics</p>
+        </div>
+      </div>
+
+      <div class="admin-layout" id="adminLayoutWrapper">
+        
+        <!-- Admin Sidebar Navigation -->
+        <div class="admin-sidebar">
+          <div class="admin-nav-item active" onclick="switchAdminTab('dashboardTab', this)">
+            <i class="fas fa-tachometer-alt"></i> Dashboard Overview
+          </div>
+          <div class="admin-nav-item" onclick="switchAdminTab('productsTab', this)">
+            <i class="fas fa-boxes"></i> View Products
+          </div>
+          <div class="admin-nav-item" onclick="switchAdminTab('addProductTab', this)">
+            <i class="fas fa-plus-circle"></i> Add New Product
+          </div>
+          <div class="admin-nav-item" onclick="switchAdminTab('ordersTab', this)">
+            <i class="fas fa-shopping-basket"></i> Customer Orders
+          </div>
+          <div class="admin-nav-item" onclick="switchAdminTab('usersTab', this)">
+            <i class="fas fa-users"></i> Platform Users
+          </div>
+        </div>
+
+        <!-- Admin Content Panes -->
+        <div>
+          
+          <!-- Tab 1: Dashboard Analytics -->
+          <div id="dashboardTab" class="admin-tab-content">
+            
+            <!-- Stat Cards Grid -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div>
+                  <div class="stat-lbl">Total Products</div>
+                  <div class="stat-val" id="statTotalProducts">0</div>
+                </div>
+                <div class="stat-icon" style="background-color: var(--primary-light); color: var(--primary);">
+                  <i class="fas fa-box"></i>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div>
+                  <div class="stat-lbl">Registered Users</div>
+                  <div class="stat-val" id="statTotalUsers">4</div>
+                </div>
+                <div class="stat-icon" style="background-color: #f3e8ff; color: #9333ea;">
+                  <i class="fas fa-users"></i>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div>
+                  <div class="stat-lbl">Total Orders</div>
+                  <div class="stat-val" id="statTotalOrders">0</div>
+                </div>
+                <div class="stat-icon" style="background-color: #e0f2fe; color: #0284c7;">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div>
+                  <div class="stat-lbl">Pending Orders</div>
+                  <div class="stat-val" id="statPendingOrders" style="color: var(--warning);">0</div>
+                </div>
+                <div class="stat-icon" style="background-color: var(--warning-light); color: var(--warning);">
+                  <i class="fas fa-clock"></i>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div>
+                  <div class="stat-lbl">Total Revenue</div>
+                  <div class="stat-val" id="statTotalRevenue" style="color: var(--success);">₹0</div>
+                </div>
+                <div class="stat-icon" style="background-color: var(--success-light); color: var(--success);">
+                  <i class="fas fa-rupee-sign"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Analytics Chart -->
+            <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 2rem;">
+              <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 1.25rem;">
+                <i class="fas fa-chart-pie" style="color: var(--primary);"></i> Products Distribution by Category
+              </h3>
+              <div id="adminCategoryChart" style="height: 250px; display: flex; align-items: flex-end; gap: 2rem; padding: 1rem 0; border-bottom: 2px solid var(--border-color);">
+                <!-- Rendered by script.js -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Tab 2: View Products -->
+          <div id="productsTab" class="admin-tab-content" style="display: none;">
+            <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem;">
+              <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem;">All Products Inventory</h2>
+              
+              <div style="overflow-x: auto;">
+                <table class="cart-table">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Rating</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminProductsTableBody">
+                    <!-- Rendered by script.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Add New Product -->
+          <div id="addProductTab" class="admin-tab-content" style="display: none;">
+            <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
+              <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem;">Add New Product to Store</h2>
+              
+              <form id="adminAddProductForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                  <div class="form-group">
+                    <label class="form-label">Product Name *</label>
+                    <input type="text" id="adminPName" class="form-control" placeholder="e.g. Wireless Noise Canceling Headphones" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Brand Name *</label>
+                    <input type="text" id="adminPBrand" class="form-control" placeholder="e.g. Sony" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Category *</label>
+                    <select id="adminPCategory" class="form-select" required>
+                      <option value="Electronics">Electronics</option>
+                      <option value="Fashion">Fashion</option>
+                      <option value="Home & Living">Home & Living</option>
+                      <option value="Beauty">Beauty</option>
+                      <option value="Sports">Sports</option>
+                      <option value="Toys">Toys</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Price (₹) *</label>
+                    <input type="number" step="0.01" id="adminPPrice" class="form-control" placeholder="19999" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Original MRP Price (₹)</label>
+                    <input type="number" step="0.01" id="adminPOriginalPrice" class="form-control" placeholder="24999">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Discount %</label>
+                    <input type="number" id="adminPDiscount" class="form-control" placeholder="20">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Stock Quantity *</label>
+                    <input type="number" id="adminPStock" class="form-control" value="50" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Image URL</label>
+                    <input type="url" id="adminPImage" class="form-control" placeholder="https://images.unsplash.com/...">
+                  </div>
+
+                  <div class="form-group" style="grid-column: span 2;">
+                    <label class="form-label">Product Description *</label>
+                    <textarea id="adminPDesc" class="form-control" rows="3" placeholder="Enter detailed specifications..." required></textarea>
+                  </div>
+
+                  <div class="form-group" style="grid-column: span 2; display: flex; gap: 1.5rem;">
+                    <label><input type="checkbox" id="adminPFeatured" value="1"> Featured on Homepage</label>
+                    <label><input type="checkbox" id="adminPBestseller" value="1"> Bestseller Tag</label>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 1rem;">
+                  <i class="fas fa-plus"></i> Save Product
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Tab 4: Customer Orders -->
+          <div id="ordersTab" class="admin-tab-content" style="display: none;">
+            <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem;">
+              <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem;">Manage All Customer Orders</h2>
+              <div style="overflow-x: auto;">
+                <table class="cart-table">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Customer</th>
+                      <th>Shipping Address</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th>Update</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminOrdersTableBody">
+                    <!-- Rendered by script.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: Users -->
+          <div id="usersTab" class="admin-tab-content" style="display: none;">
+            <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem;">
+              <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem;">Registered Users</h2>
+              <table class="cart-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Joined Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#1</td>
+                    <td><strong>Admin User</strong></td>
+                    <td>admin@cartiva.com</td>
+                    <td><span class="badge" style="background-color: var(--danger-light); color: var(--danger); position: static;">ADMIN</span></td>
+                    <td>2026-09-01</td>
+                  </tr>
+                  <tr>
+                    <td>#2</td>
+                    <td><strong>Rahul Sharma</strong></td>
+                    <td>user@cartiva.com</td>
+                    <td><span class="badge" style="background-color: var(--primary-light); color: var(--primary); position: static;">USER</span></td>
+                    <td>2026-09-02</td>
+                  </tr>
+                  <tr>
+                    <td>#3</td>
+                    <td><strong>Priya Patel</strong></td>
+                    <td>priya@example.com</td>
+                    <td><span class="badge" style="background-color: var(--primary-light); color: var(--primary); position: static;">USER</span></td>
+                    <td>2026-09-04</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+

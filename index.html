@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartiva - Shop Smart, Live Better</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <!-- Search Bar -->
+      <form action="products.html" method="GET" class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" name="q" class="form-control" placeholder="Search iPhone, Laptops, Shoes, Earbuds...">
+      </form>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="products.html?category=Electronics" class="nav-link">Categories</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- User, Wishlist & Cart Actions -->
+      <div class="nav-actions">
+        <!-- Wishlist Icon -->
+        <a href="wishlist.html" class="icon-btn" title="Saved Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="badge wishlist-badge" style="background-color: var(--danger); display: none;">0</span>
+        </a>
+
+        <!-- Shopping Cart Icon -->
+        <a href="cart.html" class="icon-btn" title="Shopping Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge cart-badge" style="display: none;">0</span>
+        </a>
+
+        <!-- User Profile Container -->
+        <div id="userNavAction">
+          <a href="login.html" class="btn btn-primary btn-sm">
+            <i class="fas fa-user"></i> Login
+          </a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Block -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <span class="hero-tag"><i class="fas fa-bolt"></i> Mega Sale Up to 40% Off</span>
+          <h1 class="hero-title">Shop Smart,<br>Live Better.</h1>
+          <p class="hero-desc">
+            Discover amazing premium products at unbeatable prices. From flagship smartphones and gadgets to trendy fashion & home decor.
+          </p>
+          <div class="hero-btns" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="products.html" class="btn btn-primary btn-lg">
+              Shop Now <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#categories" class="btn btn-outline-light btn-lg" style="border: 1px solid rgba(255,255,255,0.4); color: white;">
+              Explore Categories <i class="fas fa-th-large"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Hero Illustration / Mockup -->
+        <div class="hero-image-dec">
+          <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" fill="url(#paint0_linear)" fill-opacity="0.2"/>
+            <path d="M150 200C150 150 200 120 250 120C300 120 350 150 350 200V350H150V200Z" fill="white" fill-opacity="0.1"/>
+            <defs>
+              <linearGradient id="paint0_linear" x1="50" y1="50" x2="450" y2="450" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#60A5FA"/>
+                <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Category Icons Section -->
+      <section class="section" id="categories">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Browse Categories</h2>
+            <p class="section-subtitle">Find what you need by product category</p>
+          </div>
+        </div>
+
+        <div class="categories-grid">
+          <a href="products.html?category=Electronics" class="category-card">
+            <div class="category-icon"><i class="fas fa-laptop-code"></i></div>
+            <span class="category-name">Electronics</span>
+          </a>
+          <a href="products.html?category=Fashion" class="category-card">
+            <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+            <span class="category-name">Fashion</span>
+          </a>
+          <a href="products.html?category=Home & Living" class="category-card">
+            <div class="category-icon"><i class="fas fa-couch"></i></div>
+            <span class="category-name">Home & Living</span>
+          </a>
+          <a href="products.html?category=Beauty" class="category-card">
+            <div class="category-icon"><i class="fas fa-spa"></i></div>
+            <span class="category-name">Beauty</span>
+          </a>
+          <a href="products.html?category=Sports" class="category-card">
+            <div class="category-icon"><i class="fas fa-running"></i></div>
+            <span class="category-name">Sports</span>
+          </a>
+          <a href="products.html?category=Toys" class="category-card">
+            <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+            <span class="category-name">Toys</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Featured Products Section -->
+      <section class="section" style="margin-bottom: 3.5rem;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-subtitle">Handpicked top deals selected just for you</p>
+          </div>
+          <a href="products.html" class="btn btn-outline-primary btn-sm">
+            View All <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <div class="products-grid" id="featuredProductsGrid">
+          <!-- Populated by script.js -->
+        </div>
+      </section>
+
+      <!-- Special Offers Banner -->
+      <section class="banner-offer">
+        <div>
+          <span class="hero-tag" style="background-color: var(--primary); color: white;"><i class="fas fa-clock"></i> Limited Time Offer</span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0.8rem 0 0.5rem;">Upgrade Your Tech Today</h2>
+          <p style="color: #94a3b8; font-size: 1.05rem; max-width: 500px; margin-bottom: 1.5rem;">
+            Get instant cashback & free doorstep express delivery on flagship smartphones and laptops.
+          </p>
+          <a href="products.html?category=Electronics" class="btn btn-primary">
+            Claim Discount <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div style="font-size: 8rem; color: rgba(255,255,255,0.08); display: flex; align-items: center;">
+          <i class="fas fa-tag"></i>
+        </div>
+      </section>
+
+      <!-- Best Sellers Section -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Best Sellers</h2>
+            <p class="section-subtitle">Most popular items loved by our customers</p>
+          </div>
+          <a href="products.html?sort=rating" class="btn btn-outline-primary btn-sm">
+            See More <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <div class="products-grid" id="bestsellerProductsGrid">
+          <!-- Populated by script.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="about">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="color: white; margin-bottom: 1rem;">
+            <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+            Cart<span style="color: #60a5fa;">iva</span>
+          </a>
+          <p style="margin-bottom: 1.5rem; font-size: 0.9rem;">
+            Cartiva is your premium destination for high quality tech, fashion, lifestyle, and everyday essentials at unbeatable prices.
+          </p>
+          <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
+            <a href="#" style="color: #94a3b8;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: #94a3b8;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #94a3b8;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: #94a3b8;"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="products.html?category=Electronics">Electronics</a></li>
+            <li><a href="products.html?category=Fashion">Fashion</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="profile.html">My Account</a></li>
+            <li><a href="orders.html">Order Tracking</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col" id="contact">
+          <h4>Contact Us</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 100 E-Commerce Hub, Tech Park, Bengaluru, India</p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color: var(--primary);"></i> support@cartiva.com</p>
+          <p style="font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: var(--primary);"></i> +91 1800-123-4567</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved. Built with HTML, CSS & Vanilla JS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+

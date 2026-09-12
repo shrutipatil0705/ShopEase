@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Cartiva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <form action="products.html" method="GET" class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" name="q" class="form-control" placeholder="Search iPhone, Laptops, Shoes, Earbuds...">
+      </form>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link active">Products</a>
+        <a href="products.html?category=Electronics" class="nav-link">Categories</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="wishlist.html" class="icon-btn" title="Saved Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="badge wishlist-badge" style="background-color: var(--danger); display: none;">0</span>
+        </a>
+
+        <a href="cart.html" class="icon-btn" title="Shopping Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge cart-badge" style="display: none;">0</span>
+        </a>
+
+        <div id="userNavAction">
+          <a href="login.html" class="btn btn-primary btn-sm">
+            <i class="fas fa-user"></i> Login
+          </a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container" id="productDetailPage">
+      
+      <!-- Breadcrumbs -->
+      <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        <a href="index.html" style="color: var(--text-muted);">Home</a> /
+        <a href="products.html" id="detailCategoryLink" style="color: var(--text-muted);">Category</a> /
+        <span style="color: var(--dark); font-weight: 600;" id="detailBreadcrumbName">Product Name</span>
+      </div>
+
+      <!-- Product Detail Layout -->
+      <div class="product-detail-layout">
+        
+        <!-- Gallery -->
+        <div class="detail-gallery">
+          <img id="mainProductImg" src="" alt="Product Image" class="main-detail-img">
+          <div class="thumbnail-row" id="thumbnailRow">
+            <!-- Thumbnails inserted by script.js -->
+          </div>
+        </div>
+
+        <!-- Product Meta Info -->
+        <div class="detail-info">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="product-brand" id="detailBrand" style="font-size: 0.9rem;">Brand</span>
+            <button class="wishlist-btn" id="detailWishlistBtn" style="position: static;" title="Wishlist">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+
+          <h1 class="detail-title" id="detailTitle">Loading...</h1>
+
+          <div class="rating-stars" style="font-size: 1rem; margin-bottom: 1rem;">
+            <i class="fas fa-star"></i>
+            <strong style="color: var(--dark); font-size: 1rem;" id="detailRating">4.5</strong>
+            <span class="reviews-count" id="detailReviews">(0 Customer Reviews)</span>
+          </div>
+
+          <div class="stock-badge stock-in" id="detailStock">
+            <i class="fas fa-check-circle"></i> In Stock
+          </div>
+
+          <div class="detail-price-box">
+            <span class="price-current" id="detailPrice" style="font-size: 2.2rem;">₹0</span>
+            <span class="price-original" id="detailOriginalPrice" style="font-size: 1.2rem;">₹0</span>
+            <span class="product-badge" id="detailDiscountBadge" style="position: static; font-size: 0.85rem;">SAVE 0%</span>
+          </div>
+
+          <p style="color: var(--text-muted); font-size: 1.02rem; margin-bottom: 1.75rem; line-height: 1.6;" id="detailDesc">
+            Product description loading...
+          </p>
+
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem; flex-wrap: wrap;">
+            <div class="qty-counter">
+              <button type="button" class="qty-btn" onclick="let input = document.getElementById('itemQty'); if(input.value > 1) input.value--;">-</button>
+              <input type="number" id="itemQty" class="qty-input" value="1" min="1" readonly>
+              <button type="button" class="qty-btn" onclick="let input = document.getElementById('itemQty'); input.value++;">+</button>
+            </div>
+
+            <button id="detailAddToCartBtn" class="btn btn-primary btn-lg" style="flex: 1; min-width: 180px;">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+
+            <button id="detailBuyNowBtn" class="btn btn-outline-primary btn-lg">
+              Buy Now
+            </button>
+          </div>
+
+          <div class="trust-badges">
+            <div class="trust-item">
+              <i class="fas fa-truck"></i>
+              <strong>Free Express Shipping</strong>
+              <span>On all orders over ₹999</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-undo-alt"></i>
+              <strong>7 Days Easy Return</strong>
+              <span>100% money-back guarantee</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-shield-alt"></i>
+              <strong>Secure Payment</strong>
+              <span>Encrypted transactions</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Related Products Section -->
+      <section class="section" style="margin-top: 3.5rem;">
+        <div class="section-header">
+          <h2 class="section-title">Related Products</h2>
+        </div>
+
+        <div class="products-grid" id="relatedProductsGrid">
+          <!-- Populated by script.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+

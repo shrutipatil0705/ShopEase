@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Cartiva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <form action="products.html" method="GET" class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" name="q" class="form-control" placeholder="Search iPhone, Laptops, Shoes, Earbuds...">
+      </form>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="wishlist.html" class="icon-btn" title="Saved Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="badge wishlist-badge" style="background-color: var(--danger); display: none;">0</span>
+        </a>
+
+        <a href="cart.html" class="icon-btn" title="Shopping Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge cart-badge" style="display: none;">0</span>
+        </a>
+
+        <div id="userNavAction">
+          <a href="login.html" class="btn btn-primary btn-sm">
+            <i class="fas fa-user"></i> Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container" id="cartPageWrapper">
+      
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-size: 2rem; font-weight: 800; color: var(--dark);"><i class="fas fa-shopping-cart" style="color: var(--primary);"></i> Your Shopping Cart</h1>
+      </div>
+
+      <!-- Active Cart Layout -->
+      <div class="cart-layout" id="cartContentLayout">
+        
+        <!-- Cart Table -->
+        <div class="cart-table-wrapper">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="cartItemsBody">
+              <!-- Rendered by script.js -->
+            </tbody>
+          </table>
+
+          <div style="padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; background-color: var(--bg-alt); border-top: 1px solid var(--border-color);">
+            <a href="products.html" class="btn btn-outline">
+              <i class="fas fa-arrow-left"></i> Continue Shopping
+            </a>
+          </div>
+        </div>
+
+        <!-- Order Summary Sidebar -->
+        <div>
+          <div class="order-summary-card">
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--dark);">Order Summary</h3>
+            
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <strong id="summarySubtotal">₹0</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Estimated Shipping</span>
+              <strong id="summaryShipping">FREE</strong>
+            </div>
+
+            <p id="freeShippingHint" style="display: none; font-size: 0.8rem; color: var(--primary); background-color: var(--primary-light); padding: 0.5rem; border-radius: var(--radius-sm); margin-bottom: 1rem;">
+              <!-- Dynamic hint -->
+            </p>
+
+            <div class="summary-row total">
+              <span>Total Amount</span>
+              <span id="summaryTotal">₹0</span>
+            </div>
+
+            <a href="checkout.html" class="btn btn-primary btn-lg btn-block" style="margin-top: 1.5rem;">
+              Proceed to Checkout <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <div style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">
+              <i class="fas fa-lock" style="color: var(--success);"></i> 256-Bit SSL Encrypted Checkout
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty Cart Screen -->
+      <div id="emptyCartWrapper" style="display: none; text-align: center; padding: 5rem 2rem; background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
+        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1.25rem;"></i>
+        <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">Your Cart is Empty</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto;">
+          Looks like you haven't added anything to your cart yet. Explore our top products and start shopping!
+        </p>
+        <a href="products.html" class="btn btn-primary btn-lg">
+          Start Shopping Now <i class="fas fa-shopping-bag"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+

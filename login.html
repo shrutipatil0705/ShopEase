@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Cartiva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline-primary btn-sm">
+          <i class="fas fa-arrow-left"></i> Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      
+      <div class="auth-wrapper">
+        <!-- Left Hero Sidebar -->
+        <div class="auth-sidebar">
+          <div>
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 2rem;">
+              <div class="logo-icon" style="background: white; color: var(--primary);"><i class="fas fa-shopping-bag"></i></div>
+              Cart<span style="color: #93c5fd;">iva</span>
+            </a>
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Welcome Back!</h2>
+            <p style="color: #93c5fd; font-size: 1rem; line-height: 1.6;">
+              Sign in to access your order status, track shipments, manage saved addresses and wishlists.
+            </p>
+          </div>
+
+          <div style="background-color: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.2);">
+            <strong style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;"><i class="fas fa-key"></i> Test Login Credentials:</strong>
+            <p style="font-size: 0.82rem; margin-bottom: 0.3rem;"><strong>Customer:</strong> user@cartiva.com / user123</p>
+            <p style="font-size: 0.82rem;"><strong>Admin:</strong> admin@cartiva.com / admin123</p>
+          </div>
+        </div>
+
+        <!-- Right Form Container -->
+        <div class="auth-form-container">
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">Sign In</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">Enter your email & password below</p>
+
+          <form id="loginForm">
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" id="loginEmail" class="form-control" placeholder="name@example.com" value="user@cartiva.com" required>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                <label class="form-label" style="margin-bottom: 0;">Password</label>
+                <a href="#" style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">Forgot Password?</a>
+              </div>
+              <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" value="user123" required>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="remember" name="remember" checked>
+              <label for="remember" style="font-size: 0.875rem; color: var(--text-muted); cursor: pointer;">Remember me for 30 days</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 1rem;">
+              Sign In <i class="fas fa-sign-in-alt"></i>
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+            Don't have an account? <a href="register.html" style="color: var(--primary); font-weight: 700;">Create Account</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+

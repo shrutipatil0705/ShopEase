@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Cartiva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-shopping-bag"></i></div>
+        Cart<span>iva</span>
+      </a>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="btn btn-outline-primary btn-sm">
+          <i class="fas fa-arrow-left"></i> Back to Cart
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Order Success Screen -->
+      <div id="orderSuccessScreen" style="display: none; max-width: 650px; margin: 3rem auto; text-align: center; background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 3.5rem 2rem; box-shadow: var(--shadow-lg);">
+        <div style="width: 80px; height: 80px; background-color: var(--success-light); color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem;">
+          <i class="fas fa-check"></i>
+        </div>
+
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">Order Placed Successfully!</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.5rem;">
+          Thank you for shopping with Cartiva. Your order reference number is <strong style="color: var(--primary);" id="successOrderRef">ORD-2026-0000</strong>.
+        </p>
+
+        <div style="background-color: var(--bg-alt); padding: 1.25rem; border-radius: var(--radius-md); text-align: left; margin-bottom: 2rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem;">
+            <span style="color: var(--text-muted);">Total Amount Paid:</span>
+            <strong style="color: var(--dark);" id="successOrderTotal">₹0</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+            <span style="color: var(--text-muted);">Estimated Delivery:</span>
+            <strong style="color: var(--success);">Within 3-5 Business Days</strong>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <a href="orders.html" class="btn btn-primary btn-lg">
+            <i class="fas fa-box"></i> View My Orders
+          </a>
+          <a href="products.html" class="btn btn-outline btn-lg">
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+
+      <!-- Checkout Form Layout -->
+      <div id="checkoutFormLayout">
+        <div style="margin-bottom: 2rem;">
+          <h1 style="font-size: 2rem; font-weight: 800; color: var(--dark);">Checkout</h1>
+          <p style="color: var(--text-muted);">Complete your shipping details & payment method</p>
+        </div>
+
+        <form id="checkoutForm">
+          <div class="checkout-layout">
+            
+            <!-- Left: Shipping & Payment -->
+            <div class="checkout-box">
+              <h2 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--dark); display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Shipping Address
+              </h2>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group" style="grid-column: span 2;">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" id="checkoutName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" id="checkoutEmail" class="form-control" placeholder="rahul@example.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Mobile Phone Number *</label>
+                  <input type="tel" id="checkoutPhone" class="form-control" placeholder="+91 98765 43210" required>
+                </div>
+
+                <div class="form-group" style="grid-column: span 2;">
+                  <label class="form-label">Street Address *</label>
+                  <input type="text" id="checkoutAddress" class="form-control" placeholder="Flat No, Building, Area, Landmark" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">City *</label>
+                  <input type="text" id="checkoutCity" class="form-control" placeholder="e.g. Mumbai" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">State *</label>
+                  <input type="text" id="checkoutState" class="form-control" placeholder="e.g. Maharashtra" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Pincode *</label>
+                  <input type="text" id="checkoutPincode" class="form-control" placeholder="400001" required>
+                </div>
+              </div>
+
+              <h2 style="font-size: 1.3rem; font-weight: 800; margin: 2rem 0 1rem; color: var(--dark); display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fas fa-credit-card" style="color: var(--primary);"></i> Payment Method
+              </h2>
+
+              <input type="hidden" id="paymentMethodInput" value="UPI">
+
+              <div class="payment-options">
+                <div class="payment-card active" onclick="selectPaymentMethod(this, 'UPI')">
+                  <i class="fas fa-mobile-alt" style="font-size: 1.4rem; color: var(--primary);"></i>
+                  <div>
+                    <strong style="display: block; font-size: 0.9rem;">UPI / QR Code</strong>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">GPay, PhonePe, Paytm</span>
+                  </div>
+                </div>
+
+                <div class="payment-card" onclick="selectPaymentMethod(this, 'Credit/Debit Card')">
+                  <i class="fas fa-credit-card" style="font-size: 1.4rem; color: var(--primary);"></i>
+                  <div>
+                    <strong style="display: block; font-size: 0.9rem;">Credit / Debit Card</strong>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Visa, Mastercard, RuPay</span>
+                  </div>
+                </div>
+
+                <div class="payment-card" onclick="selectPaymentMethod(this, 'Net Banking')">
+                  <i class="fas fa-university" style="font-size: 1.4rem; color: var(--primary);"></i>
+                  <div>
+                    <strong style="display: block; font-size: 0.9rem;">Net Banking</strong>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">All major Indian banks</span>
+                  </div>
+                </div>
+
+                <div class="payment-card" onclick="selectPaymentMethod(this, 'Cash on Delivery')">
+                  <i class="fas fa-money-bill-wave" style="font-size: 1.4rem; color: var(--success);"></i>
+                  <div>
+                    <strong style="display: block; font-size: 0.9rem;">Cash on Delivery</strong>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Pay upon package arrival</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: Order Summary -->
+            <div>
+              <div class="order-summary-card">
+                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--dark);">Order Summary</h3>
+
+                <div id="checkoutItemsList" style="max-height: 240px; overflow-y: auto; margin-bottom: 1.25rem; padding-right: 0.5rem;">
+                  <!-- Rendered by script.js -->
+                </div>
+
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <strong id="checkoutSubtotal">₹0</strong>
+                </div>
+
+                <div class="summary-row">
+                  <span>Shipping Fee</span>
+                  <strong id="checkoutShipping">FREE</strong>
+                </div>
+
+                <div class="summary-row total">
+                  <span>Total Payable</span>
+                  <span id="checkoutTotal">₹0</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 1.5rem;">
+                  <i class="fas fa-check-circle"></i> Place Order Now
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cartiva E-Commerce Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./static/js/products-data.js"></script>
+  <script src="./static/js/script.js"></script>
+</body>
+</html>
+
